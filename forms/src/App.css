@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,44 @@
   to {
     transform: rotate(360deg);
   }
+} */
+body {
+  background: #444343;
+  color: #ffffff;
+}
+.container {
+  margin: 0% auto;
+  width: 35%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+label {
+  margin: 2.5% 0%;
+  color: #ffffff;
+}
+label.error {
+  color: #c21e1e;
+}
+input {
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+input.error {
+  border: 2px solid #c21e1e;
+  color: #ffffff;
+}
+button {
+  padding: 1px;
+  width: 50%;
+  margin: 2.5% auto;
+  justify-self: center;
+}
+.submitBtn {
+  background: #444343;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 10px;
 }
