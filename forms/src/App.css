@@ -76,3 +76,9 @@ button {
   color: #ffffff;
   padding: 10px;
 }
+#hidden {
+  display: none;
+}
+.thankYou {
+  text-align: center;
+}

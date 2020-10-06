@@ -34,6 +34,8 @@ function Form() {
   const [websiteText, setWebsiteText] = useState("")
   const [websiteTextErr, setWebsiteTextErr] = useState(false)
 
+  const [thankYou, setThankYou] = useState(false)
+
   let handleForm = (e) => {
     e.preventDefault()
     if (validator.isEmpty(nameText)) {
@@ -102,6 +104,22 @@ function Form() {
       setWebsiteTextErr(true)
       setWebsiteLabelErr(true)
     }
+    let longAssThing =
+      nameLabelErr === false &&
+      nameErr === false &&
+      emailLabelErr === false &&
+      emailErr === false &&
+      userLabelErr === false &&
+      userTextErr === false &&
+      passLabelErr1 === false &&
+      passTextErr1 === false &&
+      passLabelErr2 === false &&
+      passTextErr2 === false &&
+      websiteLabelErr === false &&
+      websiteTextErr === false
+    if (longAssThing === true) {
+      setThankYou(true)
+    }
     // if (!validator.equals(passText2, passText1)) {
     //   setPassLabel2("Confirm Password - Must match password")
     //   setPassLabelErr2(true)
@@ -114,71 +132,93 @@ function Form() {
   }
 
   return (
-    <form className="container" onSubmit={handleForm} noValidate>
-      <label htmlFor="name" className={nameLabelErr ? "error" : ""}>
-        {nameLabel}
-      </label>
-      <input
-        value={nameText}
-        name="name"
-        id="name"
-        className={nameErr ? "error" : ""}
-        type="text"
-        onChange={(e) => setNameText(e.target.value)}
-      />
+    <div>
+      <form
+        id={thankYou === true ? "hidden" : ""}
+        className="container"
+        onSubmit={handleForm}
+        noValidate
+      >
+        <label htmlFor="name" className={nameLabelErr ? "error" : ""}>
+          {nameLabel}
+        </label>
+        <input
+          value={nameText}
+          name="name"
+          id="name"
+          className={nameErr ? "error" : ""}
+          type="text"
+          onChange={(e) => setNameText(e.target.value)}
+        />
 
-      <label htmlFor="email" className={emailLabelErr ? "error" : ""}>{emailLabel}</label>
-      <input
-        value={emailText}
-        name="email"
-        id="email"
-        type="email"
-        className={emailErr ? "error" : ""}
-        onChange={(e) => setEmailText(e.target.value)}
-      />
+        <label htmlFor="email" className={emailLabelErr ? "error" : ""}>
+          {emailLabel}
+        </label>
+        <input
+          value={emailText}
+          name="email"
+          id="email"
+          type="email"
+          className={emailErr ? "error" : ""}
+          onChange={(e) => setEmailText(e.target.value)}
+        />
 
-      <label htmlFor="username" className={userLabelErr ? "error" : ""}>{userLabel}</label>
-      <input
-        value={userText}
-        name="username"
-        id="username"
-        type="text"
-        className={userTextErr ? "error" : ""}
-        onChange={(e) => setUserText(e.target.value)}
-      />
+        <label htmlFor="username" className={userLabelErr ? "error" : ""}>
+          {userLabel}
+        </label>
+        <input
+          value={userText}
+          name="username"
+          id="username"
+          type="text"
+          className={userTextErr ? "error" : ""}
+          onChange={(e) => setUserText(e.target.value)}
+        />
 
-      <label htmlFor="password" className={passLabelErr1 ? "error" : ""}>{passLabel1}</label>
-      <input
-        value={passText1}
-        name="password"
-        id="password"
-        type="password"
-        className={passTextErr1 ? "error" : ""}
-        onChange={(e) => setPassText1(e.target.value)}
-      />
+        <label htmlFor="password" className={passLabelErr1 ? "error" : ""}>
+          {passLabel1}
+        </label>
+        <input
+          value={passText1}
+          name="password"
+          id="password"
+          type="password"
+          className={passTextErr1 ? "error" : ""}
+          onChange={(e) => setPassText1(e.target.value)}
+        />
 
-      <label htmlFor="passwordConf" className={passLabelErr2 ? "error" : ""}>{passLabel2}</label>
-      <input
-        value={passText2}
-        name="passwordConf"
-        id="passwordConf"
-        type="password"
-        className={passTextErr2 ? "error" : ""}
-        onChange={(e) => setPassText2(e.target.value)}
-      />
+        <label htmlFor="passwordConf" className={passLabelErr2 ? "error" : ""}>
+          {passLabel2}
+        </label>
+        <input
+          value={passText2}
+          name="passwordConf"
+          id="passwordConf"
+          type="password"
+          className={passTextErr2 ? "error" : ""}
+          onChange={(e) => setPassText2(e.target.value)}
+        />
 
-      <label htmlFor="website" className={websiteLabelErr ? "error" : ""}>{websiteLabel}</label>
-      <input
-        value={websiteText}
-        name="website"
-        id="website"
-        type="url"
-        className={websiteTextErr ? "error" : ""}
-        onChange={(e) => setWebsiteText(e.target.value)}
-      />
+        <label htmlFor="website" className={websiteLabelErr ? "error" : ""}>
+          {websiteLabel}
+        </label>
+        <input
+          value={websiteText}
+          name="website"
+          id="website"
+          type="url"
+          className={websiteTextErr ? "error" : ""}
+          onChange={(e) => setWebsiteText(e.target.value)}
+        />
 
-      <button className="submitBtn" type="submit">Submit</button>
-    </form>
+        <button className="submitBtn" type="submit">
+          Submit
+        </button>
+      </form>
+      <div className="thankYou" id={thankYou === true ? "" : "hidden"}>
+        <h1>Thank you!</h1>
+      </div>
+    </div>
   )
 }
 
